@@ -1,0 +1,39 @@
+{
+  "name": "swastik-review-automation",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Google Sheets connector for Swastik review automation",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "phase3:dry-run": "tsx src/cli/runPhase3.ts",
+    "phase3:send-test": "tsx src/cli/runPhase3.ts --send",
+    "worker:dry-run": "tsx src/cli/runBilingualCycle.ts",
+    "worker:once": "tsx src/cli/runBilingualCycle.ts --send",
+    "worker:start": "tsx src/worker.ts",
+    "verify:read": "tsx src/cli/verifyGoogleRead.ts",
+    "verify:write": "tsx src/cli/verifyGoogleWrite.ts"
+  },
+  "dependencies": {
+    "better-sqlite3": "^13.0.3",
+    "dotenv": "^17.2.3",
+    "googleapis": "^160.0.0",
+    "pm2": "7.0.3",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^9.6.0",
+    "@types/node": "^24.10.1",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
+  },
+  "overrides": {
+    "js-yaml": "5.2.3"
+  }
+}
